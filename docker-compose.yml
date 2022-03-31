@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:13.4-alpine
+    container_name: cms-db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+    restart: always
+    ports:
+      - "2030:5432"
+    volumes:
+    - ./db:/var/lib/postgresql/data # Use bind mount
+
+  php:
+    image: drupal:9.3.9-php8.0-fpm-alpine
+    container_name: cms-drupal
+    volumes:
+    - drupal-data:/opt/drupal/web
+
+  nginx:
+    image: nginx:1.21.1-alpine
+    container_name: cms-nginx
+    depends_on:
+    - php
+    environment:
+      NGINX_STATIC_OPEN_FILE_CACHE: "off"
+      NGINX_ERROR_LOG_LEVEL: debug
+      NGINX_BACKEND_HOST: php
+      NGINX_SERVER_ROOT: /opt/drupal/web
+      NGINX_CONF_INCLUDE: /etc/nginx/conf.d/nginx.conf
+    #      NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
+    ports:
+      - "8010:80"
+    volumes:
+      - drupal-data:/var/www/html
+      - ./nginx/conf:/etc/nginx/conf.d
+  
+volumes:
+  drupal-data:
