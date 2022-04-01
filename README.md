@@ -18,4 +18,5 @@ Quick start:
 2. Run the command: "docker-compose up".
 3. Go to "localhost:8010" in the browser and set up your first Drupal project.
 
-![image](https://user-images.githubusercontent.com/67773113/161019672-9b7cfc9b-cd03-4ca6-9621-ab7e546a266b.png)
+![image](https://user-images.githubusercontent.com/67773113/161204819-834024cc-0441-4fb8-8b91-788d0adb337e.png)
+
