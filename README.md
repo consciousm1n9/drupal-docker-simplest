@@ -14,9 +14,9 @@ Requirements:
 1. Docker running.
 
 Quick start:
-1. Donwload or clone this repository and move to where the docker-compose file is located.
-2. Run the command: "docker-compose up".
-3. Go to "localhost:8010" in the browser and set up your first Drupal project.
+1. Donwload or clone this repository and move where docker-compose file is locate.
+2. Execute command: "docker-compose up". Wait for download and run images.
+3. Go to "localhost:8010" in browser and set up your first Drupal project.
 
 ![image](https://user-images.githubusercontent.com/67773113/161204819-834024cc-0441-4fb8-8b91-788d0adb337e.png)
 
